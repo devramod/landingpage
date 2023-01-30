@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpeveryone - We help everyone</title>
+    <meta name="title" content="Helpeveryone - We help everyone">
+    <meta name="description" content="Our holistic approach to combatting the cycle of crisis around the world">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- javascript -->
+    <script src="{% static 'javascript/main.js' %}" defer></script>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'media/favicon/favicon.svg' %}" type="image/svg+xml">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- fontawesome-icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <!-- Pop-up forms -->
+        <div class="container__success container__success--hidden">
+            <div class="container__success-wrap">
+                <i class="uil uil-times popFormCloseBtn" id="successClose"></i>
+                <h1></h1>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="container__form container__form-pop">
+            <div class="container__form-wrap">
+                <i class="uil uil-times popFormCloseBtn" id="popFormClose"></i>
+                <form class="form" id="signUp" name="formSignup" autocomplete="off">
+                    {% csrf_token %}
+                    <h1 class="form__title">Sign up</h1>
+                    <p class="form__description">There's no charge upon registration</p>
+                    {% for message in messages %}
+                    <div class="form__message-error">{{message}}</div>
+                    {% endfor %}
+                    <div class="form__input-group">
+                        <input type="text" id="signupFullName" class="form__input" name="username"
+                            placeholder="Full name" required>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="email" id="signupEmail" class="form__input" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" id="signupPassword" class="form__input" name="password"
+                            placeholder="Password" required>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" id="signupPassword2" class="form__input" name="password2"
+                            placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="form__button">Submit</button>
+                    <p class="form__text">Already a member? <a href="" class="form__link" id="linkLogin">Login</a>
+                    </p>
+                </form>
+                <form action="account" method="post" enctype="application/x-www-form-urlencoded" target="_blank"
+                    class="form form--hidden" id="login" name="formLogin">
+                    {% csrf_token %}
+                    <h1 class="form__title">Welcome back!</h1>
+                    <p class="form__description">Kindly fill in your login details to proceed</p>
+                    {% for message in messages %}
+                    <div class="form__message-error">{{message}}</div>
+                    {% endfor %}
+                    <div class="form__input-group">
+                        <input type="text" id="loginUsername" class="form__input" name="username" placeholder="Username"
+                            required>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" id="loginPassword" class="form__input" name="password"
+                            placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="form__button">Submit</button>
+                    <p class="form__text">Don't you have an account yet? <a href="" class="form__link"
+                            id="linkSignup">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Header -->
+
+        <header class="container__header">
+            <div class="container__header-content">
+                <!-- logo -->
+                <div class="container__header-content-logo">
+                    <a href=""><img src="{% static 'media/logo/main-logo.svg' %}" alt="logo"></a>
+                </div>
+
+                <!-- navigation-links -->
+                <nav class="container__header-content-navigation">
+                    <!-- ham-menu-icon -->
+                    <i class="uil uil-bars navOpenBtn"></i>
+                    <ul class="container__header-content-navigation__list">
+                        <li><a href="">Home</a></li>
+                        <li><a href="#N1">About us</a></li>
+                        <li><a href="#N2">Our services</a></li>
+                        <li><a href="#N3">Contact us</a></li>
+                        <li id="removeSignup">Sign up</a></li>
+                        <!-- search-icon -->
+                        <i class="uil uil-search search-icon" id="searchIcon"></i>
+
+                        <!-- close-icon -->
+                        <i class="uil uil-times navCloseBtn"></i>
+
+                        <div class="container__header-content-navigation__search-bar">
+                            <i class="uil uil-search search-icon"></i>
+                            <input type="text" class="container__header-content-navigation__search-bar-input"
+                                name="search" id="search" placeholder="Search here...">
+                        </div>
+                    </ul>
+
+                </nav>
+
+
+                <!-- sign-up-button -->
+                <button class="container__header-content-sign-up" id="buttonSignup" type="button">Sign up</button>
+            </div>
+        </header>
+
+
+        <!-- Hero -->
+
+        <section class="container__hero">
+            <div class="container__hero__left">
+                <h1>We <span>Help</span> Everyone<br>Here For A<span> Better Life</span></h1>
+                <p>If you are someone who like to help other, get started</p>
+                <div class="container__hero__left-buttons">
+                    <a href=""><button type="button">Get Started</button></a>
+                    <div class="container__hero__left-buttons-play">
+                        <a href="" class="container__hero__left-buttons-play-link">
+                            <span>Watch our story</span>
+                            <img src="{% static 'media/icons/play-button-icon.svg' %}" alt="play-button">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container__hero__right">
+                <div class="container__hero__right-image-01">
+                    <img src="{% static 'media/desktop/illustrations/illustration-1.svg' %}" alt="hero-image">
+                </div>
+                <div class="container__hero__right-image-02">
+                    <img src="{% static 'media/tablet, mobile/illustrations/illustration-1.svg' %}" alt="hero-image">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About -->
+
+        {% for i in about %}
+        <section class="container__about">
+            <!-- Desktop -->
+            <img class="container__about-image-01" src="{% static 'media/desktop/illustrations/illustration-2.svg' %}"
+                alt="about-image-01">
+            <img class="container__about-image-02" src="{% static 'media/desktop/illustrations/illustration-3.svg' %}"
+                alt="about-image-02">
+            <!-- Tablet, Mobile -->
+            <img class="container__about-image-03"
+                src="{% static 'media/tablet, mobile/illustrations/illustration-2.svg' %}" alt="about-image-03">
+            <img class="container__about-image-04"
+                src="{% static 'media/tablet, mobile/illustrations/illustration-3.svg' %}" alt="about-image-04">
+            <div class="container__about-title">
+                <p id="N1">{{i.title}}</p>
+            </div>
+            <div class="container__about-description">
+                <p>{{i.description}}</p>
+            </div>
+
+
+        </section>
+        {% endfor %}
+
+
+        <!-- Service -->
+
+        <main class="container__services">
+            <div class="container__services-title">
+                <h3 id="N2">Our Services</h3>
+                <p>Some of the services include the following :</p>
+            </div>
+            {% for i in service.service_one %}
+            <div class="container__services-one">
+                <div class="container__services-one-left">
+                    <h4>{{i.title}}</h4>
+                    <p>{{i.description}}</p>
+                    <div class="container__services-one-left-button">
+                        <a href=""><button type="button">About This</button></a>
+                    </div>
+                </div>
+                <div class="container__services-one-right">
+                    <!-- Desktop -->
+                    <img class="container__services-one-right-image-01"
+                        src="{% static 'media/desktop/illustrations/illustration-4.svg' %}" alt="service-image-01">
+                    <!-- Tablet, Mobile -->
+                    <img class="container__services-one-right-image-02"
+                        src="{% static 'media/tablet, mobile/illustrations/illustration-4.svg' %}"
+                        alt="service-image-02">
+                </div>
+            </div>
+            {% endfor %}
+            {% for i in service.service_two %}
+            <div class="container__services-two">
+                <div class="container__services-two-left">
+                    <h4>{{i.title}}</h4>
+                    <p>{{i.description}}</p>
+                    <div class="container__services-two-left-button">
+                        <a href=""><button type="button">About This</button></a>
+                    </div>
+                </div>
+                <div class="container__services-two-right">
+                    <!-- Desktop -->
+                    <img class="container__services-two-right-image-01"
+                        src="{% static 'media/desktop/illustrations/illustration-5.svg' %}" alt="service-image-01">
+                    <!-- Tablet, Mobile -->
+                    <img class="container__services-two-right-image-02"
+                        src="{% static 'media/tablet, mobile/illustrations/illustration-5.svg' %}"
+                        alt="service-image-02">
+                </div>
+            </div>
+            {% endfor %}
+            {% for i in service.service_three %}
+            <div class="container__services-three">
+                <div class="container__services-three-left">
+                    <h4>{{i.title}}</h4>
+                    <p>{{i.description}}</p>
+                    <div class="container__services-three-left-button">
+                        <a href=""><button type="button">About This</button></a>
+                    </div>
+                </div>
+                <div class="container__services-three-right">
+                    <!-- Desktop -->
+                    <img class="container__services-three-right-image-01"
+                        src="{% static 'media/desktop/illustrations/illustration-6.svg' %}" alt="service-image-01">
+                    <!-- Tablet, Mobile -->
+                    <img class="container__services-three-right-image-02"
+                        src="{% static 'media/tablet, mobile/illustrations/illustration-6.svg' %}"
+                        alt="service-image-02">
+                </div>
+            </div>
+            {% endfor %}
+        </main>
+
+
+        <!-- Newsletter -->
+
+        <section class="container__newsletter">
+            <div class="container__newsletter_wrap">
+                <div class="container__newsletter-left">
+                    <!-- Desktop -->
+                    <img class="container__newsletter-left-image-01"
+                        src="{% static 'media/desktop/illustrations/illustration-7.svg' %}" alt="service-image-01">
+                </div>
+                <div class="container__newsletter-right">
+                    <h4>Do you want to have special help?</h4>
+                    <div class="container__newsletter-right-button">
+                        <a href=""><button type="button">Get in Touch!</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact -->
+
+        <section class="container__contact">
+            <div class="container__contact-wrap">
+                <div class="container__contact-wrap-heading">
+                    <h4 id="N3">Request a free consultation</h4>
+                    <p>Complete the form below so that our consultants will contact you.</p>
+                    <p class="success-contact success-contact-hidden"></p>
+                </div>
+                <div class="container__contact-wrap-form">
+                    <form class="container__contact-wrap-form-elements" id="contactForm" name="formContact">
+                        {% csrf_token %}
+                        <div class="container__contact-wrap-form-elements-one">
+                            <label for="name">Full name</label>
+                            <input type="text" name="name" id="name" required>
+                        </div>
+                        <div class="container__contact-wrap-form-elements-two">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+                        <div class="container__contact-wrap-form-elements-three">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" required></textarea>
+                        </div>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+
+        <footer class="container__footer">
+            <div class="container__footer-part-one">
+                <div class="container__footer-part-one-logo">
+                    <img src="{% static 'media/logo/main-logo.svg' %}" alt="logo">
+                    <div class="container__footer-part-one-logo-text">
+                        <h4>We <span>help</span> everyone<br>here for a<span> better life</span></h4>
+                    </div>
+                </div>
+                <div class="container__footer-part-one-navigation">
+                    <div class="container__footer-part-one-navigation-links">
+                        <h6>Services</h6>
+                        <ul>
+                            <li><a href="">Guardianship</a></li>
+                            <li><a href="">Helping the elderly</a></li>
+                            <li><a href="">Buying food</a></li>
+                        </ul>
+                    </div>
+                    <div class="container__footer-part-one-navigation-links">
+                        <h6>Info</h6>
+                        <ul>
+                            <li><a href="">About us</a></li>
+                            <li><a href="">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="container__footer-part-one-navigation-links">
+                        <h6>Office</h6>
+                        <address>
+                            <ul>
+                                <li>43252 Borer mountains</li>
+                                <li>Zackerychester</li>
+                                <li>Bahamas</li>
+                                <li>734-45-4945</li>
+                            </ul>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="container__footer-part-two">
+                <p>Copyright @ 2021 helpeveryone LLC all rights reserved</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

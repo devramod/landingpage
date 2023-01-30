@@ -1,0 +1,79 @@
+:root {
+    /* Colors */
+    --dark-blue: #2995E2;
+    --light-blue: #D6EEFF;
+    --titles-color: #3F3F3F;
+    --button-back-border-color: #4E4E4E;
+    --background-color: #F5F5F5;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.container {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 47px;
+    color: var(--titles-color);
+}
+
+.container a button {
+    position: relative;
+    padding: 7px 32.5px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: #fff;
+    background-color: var(--dark-blue);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.container a button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 7px;
+    left: 6px;
+    border: 1px solid var(--button-back-border-color);
+    transform: translateZ(-1px);
+}
+
+.container button:hover {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+}
+
+.container a button:hover::after {
+    border: 1px solid var(--dark-blue);
+}
+
+.container a button:active {
+    transform: scale(0.98);
+}

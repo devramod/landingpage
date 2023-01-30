@@ -1,0 +1,15 @@
+google-fonts - <link rel="preconnect" href="https://fonts.googleapis.com">
+	       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	       <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700&display=swap" rel="stylesheet">
+		   
+font-awesome - <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+search-icon - <i class="fa-regular fa-magnifying-glass"></i>
+ham-menu - <i class="fa-regular fa-bars"></i>
+arrow-down - <i class="fa-regular fa-chevron-down"></i>
+circle-play - <i class="fa-sharp fa-solid fa-circle-play"></i>
+
+instagram - <i class="fa-brands fa-instagram"></i>
+dribble - <i class="fa-brands fa-dribbble"></i>
+twitter - <i class="fa-brands fa-twitter"></i>
+youtube - <i class="fa-brands fa-youtube"></i>
